@@ -2,19 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>LIBS 882 – Web System Design & Management – 200 Q Quiz</title>
+<title>LIBS 882 – 200-Q Quiz</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
- body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f5f5}
- #card{margin:40px auto;max-width:700px;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);padding:30px}
- .hidden{display:none}
- .emoji{font-size:3em;text-align:center;margin:10px}
- .exp{margin-top:15px;font-size:.95em;color:#333}
- .nextBtn{background:#007bff;color:#fff;border:none;padding:10px 20px;border-radius:4px;cursor:pointer;margin-top:15px}
- .nextBtn:hover{background:#0056b3}
- .rightOpt{background:#d4edda;border:1px solid #c3e6cb;border-radius:4px;padding:4px;margin:4px 0}
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    background:#f5f5f5;
+  }
+  #card{
+    margin:40px auto;
+    max-width:700px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+    padding:30px;
+  }
+  .hidden{display:none}
+  .emoji{font-size:3em;text-align:center;margin:10px}
+  .exp{margin-top:15px;font-size:.95em;color:#333;line-height:1.5}
+  .nextBtn{
+    background:#007bff;
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    border-radius:4px;
+    cursor:pointer;
+    margin-top:15px;
+  }
+  .nextBtn:hover{background:#0056b3}
+  .rightOpt{background:#d4edda;border:1px solid #c3e6cb;border-radius:4px;padding:4px;margin:4px 0}
+  label{display:block;margin:6px 0}
+  input[type=radio]{margin-right:8px}
 </style>
 </head>
 <body>
+
 <div id="card">
   <div id="qNum" style="font-weight:bold;margin-bottom:10px"></div>
   <div id="stem"></div>
@@ -27,7 +50,6 @@
 </div>
 
 <script>
-/* ------------ 200 NEW QUESTIONS – LIBS 882: Web System Design & Management ------------ */
 const bank = [
 {q:"Who invented the World Wide Web?",opts:["Vint Cerf","Tim Berners-Lee ✅","Steve Jobs","Bill Gates"],exp:"Tim Berners-Lee, a British scientist at CERN, invented the Web in 1989."},
 {q:"The Web became publicly announced on which date?",opts:["6 August 1991 ✅","15 February 2005","12 March 1989","1 January 1993"],exp:"CERN publicized the World-Wide-Web project on 6 August 1991."},
@@ -159,32 +181,9 @@ const bank = [
 {q:"Which CSS rule selects elements based on attribute presence?",opts:["[attr] ✅","attr{}",".attr","#attr"],exp:"input[type='checkbox'] selects only checkboxes using attribute selectors."},
 {q:"Which JavaScript API requests user permission for notifications?",opts:["Notification.requestPermission() ✅","Notification.allow()","Notification.prompt()","Notification.grant()"],exp:"Notification.requestPermission().then(perm => …) asks user to allow alerts."},
 {q:"Which HTML element defines client-side script templates?",opts:["<template> ✅","<script type='template'>","<tmpl>","<script-template>"],exp:"<template> holds inert markup cloned by JavaScript when needed."},
-{q:"Which CSS property sets grid template areas visually?",opts:["grid-template-areas ✅","grid-areas","layout-areas","template-areas"],exp:"grid-template-areas:'header header' 'nav main' defines named grid slots."},
-{q:"Which JavaScript keyword declares constants?",opts:["const ✅","let","var","define"],exp:"const PI=3.14; prevents reassignment of the binding."},
-{q:"Which HTML attribute provides high-DPI favicon support?",opts:["sizes ✅","resolution","density","srcset"],exp:"<link rel='icon' href='icon-32.png' sizes='32x32'> supplies multiple resolutions."},
-{q:"Which CSS rule applies styles only in dark mode?",opts:["@media (prefers-color-scheme:dark) ✅","@media dark","@media color-scheme:dark","@media mode:dark"],exp:"Prefers-color-scheme media query adapts themes to user system settings."},
-{q:"Which JavaScript method converts a NodeList to an array?",opts:["Array.from() ✅","NodeList.toArray()","Array.convert()","[].slice.call()"],exp:"Array.from(document.querySelectorAll('li')) returns a real array."},
-{q:"Which HTML attribute sets autocomplete hint for inputs?",opts:["autocomplete ✅","predict","suggest","auto"],exp:"autocomplete='email' helps browsers prefill known email addresses."},
-{q:"Which CSS property specifies fallback fonts?",opts:["font-family ✅","font-stack","font-list","font-fallback"],exp:"font-family:'Helvetica Neue', Arial, sans-serif; provides cascading fallbacks."},
-{q:"Which JavaScript API enables bidirectional server communication?",opts:["WebSocket ✅","HTTP2","SSE","AJAX"],exp:"new WebSocket('wss://chat') creates full-duplex channels."},
-{q:"Which HTML tag embeds vector-based icons without images?",opts:["<svg> ✅","<vector>","<icon>","<glyph>"],exp:"Inline <svg> allows scalable icons styled with CSS."},
-{q:"Which CSS rule targets every element except one?",opts:[":not(selector) ✅",":except(selector)",":exclude(selector)","!selector"],exp:"li:not(.active) { opacity:0.5; } excludes the active item."},
-{q:"Which attribute on <img> enables responsive images?",opts:["srcset ✅","sizes","responsive","media"],exp:"srcset='pic-480.jpg 480w, pic-800.jpg 800w' supplies multiple resolutions."},
-{q:"Which JavaScript method removes whitespace from both ends?",opts:["trim() ✅","strip()","clean()","chomp()"],exp:"' hello '.trim() returns 'hello'."},
-{q:"Which CSS property creates animated keyframes?",opts:["@keyframes ✅","@animate","@motion","@tween"],exp:"@keyframes slide { from {left:0;} to {left:100px;} } defines animations."},
-{q:"Which HTML attribute sets the scope of a table header?",opts:["scope ✅","range","area","zone"],exp:"<th scope='row'>Header</th> associates header with its row."},
-{q:"Which CSS value makes content invisible but accessible?",opts:["opacity:0","visibility:hidden","position:absolute; left:-9999px ✅","display:none"],exp:"Off-screen positioning hides visually yet keeps screen-reader access."},
-{q:"Which JavaScript object stores session-only key/value pairs?",opts:["sessionStorage ✅","localStorage","cookieStorage","tempStorage"],exp:"sessionStorage persists only for the duration of the page session."},
-{q:"Which HTTP header prevents embedding in iframes?",opts:["X-Frame-Options ✅","Content-Security-Policy","Frame-Control","Embed-Protect"],exp:"X-Frame-Options:DENY blocks click-jacking by forbidding framing."},
-{q:"Which CSS property sets the initial main size of a flex item?",opts:["flex-basis ✅","flex-size","flex-width","initial-size"],exp:"flex-basis:200px defines the starting size before free space is distributed."},
-{q:"Which HTML attribute allows spell-checking on contenteditable?",opts:["spellcheck ✅","checkspelling","autocorrect","grammar"],exp:"<div contenteditable spellcheck='true'> enables red underlines."},
-{q:"Which CSS rule selects elements based on attribute presence?",opts:["[attr] ✅","attr{}",".attr","#attr"],exp:"input[type='checkbox'] selects only checkboxes using attribute selectors."},
-{q:"Which JavaScript API requests user permission for notifications?",opts:["Notification.requestPermission() ✅","Notification.allow()","Notification.prompt()","Notification.grant()"],exp:"Notification.requestPermission().then(perm => …) asks user to allow alerts."},
-{q:"Which HTML element defines client-side script templates?",opts:["<template> ✅","<script type='template'>","<tmpl>","<script-template>"],exp:"<template> holds inert markup cloned by JavaScript when needed."},
 {q:"Which CSS property sets grid template areas visually?",opts:["grid-template-areas ✅","grid-areas","layout-areas","template-areas"],exp:"grid-template-areas:'header header' 'nav main' defines named grid slots."}
 ];
 
-/* ------------ interactive script ------------ */
 let idx = 0;
 const qNum = document.getElementById('qNum');
 const stem = document.getElementById('stem');
@@ -202,13 +201,11 @@ function renderQ() {
 
   item.opts.forEach((opt,i)=>{
     const label = document.createElement('label');
-    label.style.display='block';label.style.margin='6px 0';
     const radio = document.createElement('input');
     radio.type='radio'; radio.name='opt'; radio.value=i;
     radio.addEventListener('change',()=>checkAnswer(i));
     label.appendChild(radio);
-    const txt = opt.replace(' ✅','');
-    label.append(txt);
+    label.append(opt.replace(' ✅',''));
     opts.appendChild(label);
   });
 }
@@ -219,8 +216,7 @@ function checkAnswer(chosen) {
   const right = chosen === correct;
   emoji.textContent = right ? '🏆' : '👶';
   let html = right ? '<strong>Correct!</strong><br>' : '<strong>Not quite.</strong><br>';
-  const labels = opts.querySelectorAll('label');
-  labels[correct].className = 'rightOpt';
+  opts.querySelectorAll('label')[correct].className = 'rightOpt';
   html += item.exp;
   exp.innerHTML = html;
   feedback.classList.remove('hidden');
@@ -240,5 +236,6 @@ function nextQ() {
 
 renderQ();
 </script>
+
 </body>
 </html>
