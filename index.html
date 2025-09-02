@@ -5,35 +5,41 @@
 <title>LIBS 882 – 200-Q Quiz</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-  body{
-    font-family:Arial,Helvetica,sans-serif;
-    margin:0;
-    background:#f5f5f5;
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f5f5f5;
   }
-  #card{
-    margin:40px auto;
-    max-width:700px;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,.15);
-    padding:30px;
+  #card {
+    margin: 40px auto;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    padding: 30px;
   }
-  .hidden{display:none}
-  .emoji{font-size:3em;text-align:center;margin:10px}
-  .exp{margin-top:15px;font-size:.95em;color:#333;line-height:1.5}
-  .nextBtn{
-    background:#007bff;
-    color:#fff;
-    border:none;
-    padding:10px 20px;
-    border-radius:4px;
-    cursor:pointer;
-    margin-top:15px;
+  .hidden { display: none; }
+  .emoji { font-size: 3em; text-align: center; margin: 10px; }
+  .exp { margin-top: 15px; font-size: .95em; color: #333; line-height: 1.5; }
+  .nextBtn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
   }
-  .nextBtn:hover{background:#0056b3}
-  .rightOpt{background:#d4edda;border:1px solid #c3e6cb;border-radius:4px;padding:4px;margin:4px 0}
-  label{display:block;margin:6px 0}
-  input[type=radio]{margin-right:8px}
+  .nextBtn:hover { background: #0056b3; }
+  .rightOpt {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px 0;
+  }
+  label { display: block; margin: 6px 0; }
+  input[type=radio] { margin-right: 8px; }
 </style>
 </head>
 <body>
@@ -51,137 +57,10 @@
 
 <script>
 const bank = [
-{q:"Who invented the World Wide Web?",opts:["Vint Cerf","Tim Berners-Lee ✅","Steve Jobs","Bill Gates"],exp:"Tim Berners-Lee, a British scientist at CERN, invented the Web in 1989."},
-{q:"The Web became publicly announced on which date?",opts:["6 August 1991 ✅","15 February 2005","12 March 1989","1 January 1993"],exp:"CERN publicized the World-Wide-Web project on 6 August 1991."},
-{q:"What does HTML stand for?",opts:["High-Level Mark-up Language","HyperText Mark-up Language ✅","Home Tool Mark-up Language","HyperTransfer Mark-up Language"],exp:"HTML = HyperText Mark-up Language, the publishing language of the Web."},
-{q:"Which organisation maintains HTML standards?",opts:["IETF","W3C ✅","ISO","IEEE"],exp:"The World Wide Web Consortium (W3C) oversees HTML specifications."},
-{q:"HTTP is carried primarily over which TCP port?",opts:["21","25","80 ✅","443"],exp:"HTTP traditionally uses TCP port 80 (443 for HTTPS)."},
-{q:"In URL syntax, which part identifies the protocol?",opts:["Domain","Path","Fragment","Scheme ✅"],exp:"The scheme (e.g., http, https, ftp) appears first in a URL."},
-{q:"DNS translates human-readable domain names into…",opts:["MAC addresses","IP addresses ✅","Email addresses","Port numbers"],exp:"DNS resolves hostnames to IP addresses so browsers can route requests."},
-{q:"Which tag pair defines the largest heading in HTML?",opts:["<h6>…</h6>","<head>…</head>","<h1>…</h1> ✅","<title>…</title>"],exp:"<h1> produces the top-level heading; <h6> is smallest."},
-{q:"Which attribute is required in every <img> tag for accessibility?",opts:["src","alt ✅","width","align"],exp:"The alt attribute provides alternative text for screen readers."},
-{q:"Inline CSS is applied using which HTML attribute?",opts:["class","id","style ✅","css"],exp:"The style attribute embeds CSS rules directly in an element."},
-{q:"Which HTML tag creates a line break without starting a new paragraph?",opts:["<br> ✅","<p>","<hr>","<lb>"],exp:"<br> inserts a single line-break; <p> creates a paragraph."},
-{q:"The default file extension for HTML documents is…",opts:[".htm or .html ✅",".txt",".exe",".xml"],exp:"Browsers expect .htm or .html extensions for web pages."},
-{q:"Which tool is recommended in the course for first-time HTML authors?",opts:["Microsoft Word","Notepad ✅","Photoshop","Excel"],exp:"The course suggests Notepad for its simplicity when learning HTML."},
-{q:"What does URL stand for?",opts:["Universal Reference Link","Uniform Resource Locator ✅","Universal Retrieval Language","User Request Link"],exp:"Uniform Resource Locator uniquely identifies web resources."},
-{q:"Which HTML tag defines an unordered list?",opts:["<ol>","<ul> ✅","<li>","<dl>"],exp:"<ul> creates a bulleted (unordered) list; <ol> is numbered."},
-{q:"A definition list uses which three tags?",opts:["<ul>, <li>, </ul>","<dl>, <dt>, <dd> ✅","<ol>, <li>, </ol>","<table>, <tr>, <td>"],exp:"<dl> wraps terms (<dt>) and their definitions (<dd>)."},
-{q:"To create a hyperlink, which tag is used?",opts:["<link>","<a> ✅","<href>","<hyper>"],exp:"The anchor tag <a> with href attribute creates hyperlinks."},
-{q:"What is the purpose of the <head> section?",opts:["Display main content","Hold metadata & title ✅","Define page footer","Insert images"],exp:"<head> contains meta, title, links to CSS, scripts, etc."},
-{q:"Which attribute in <form> specifies the server-side handler?",opts:["method","action ✅","enctype","target"],exp:"action=\"URL\" tells the browser where to send form data."},
-{q:"POST differs from GET in that POST…",opts:["Appends data in the URL","Is limited to 2 KB","Sends data in the request body ✅","Cannot handle binary data"],exp:"POST transmits form data inside the HTTP message body."},
-{q:"Which input type hides characters as bullets?",opts:["text","hidden","password ✅","secret"],exp:"<input type=\"password\"> masks input for privacy."},
-{q:"To allow multiple selections in a drop-down, add which attribute?",opts:["many","multiple ✅","selectall","array"],exp:"<select multiple> lets users choose more than one option."},
-{q:"Which tag creates table headers?",opts:["<th> ✅","<td>","<tr>","<header>"],exp:"<th> defines header cells; <td> is for regular data cells."},
-{q:"Which attribute merges table cells horizontally?",opts:["colspan ✅","rowspan","merge","span"],exp:"colspan=\"n\" stretches a cell across n columns."},
-{q:"What does CSS stand for?",opts:["Computer Style Symbols","Cascading Style Sheets ✅","Creative Styling System","Code Styling Syntax"],exp:"CSS = Cascading Style Sheets, the presentation layer of the Web."},
-{q:"Responsive design mainly targets which problem?",opts:["Security","Cross-browser layout","Device screen-size diversity ✅","Color blindness"],exp:"Responsive techniques adapt layouts to phones, tablets, desktops, etc."},
-{q:"Which meta tag helps set viewport scaling on mobile?",opts:["<meta charset>","<meta name='viewport'> ✅","<meta refresh>","<meta keywords>"],exp:"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> enables responsiveness."},
-{q:"Which HTML5 element is intended for navigation links?",opts:["<section>","<nav> ✅","<aside>","<article>"],exp:"<nav> semantically marks up primary navigation blocks."},
-{q:"The <iframe> tag is used to…",opts:["Create tables","Embed another HTML page ✅","Define a paragraph","Insert audio"],exp:"<iframe src=\"URL\"> embeds external pages within the current one."},
-{q:"Which protocol is used to send email from a web form?",opts:["FTP","SMTP ✅","HTTP","SNMP"],exp:"SMTP (Simple Mail Transfer Protocol) relays email messages."},
-{q:"Cookies are stored…",opts:["Server-side only","In the HTML file","Client-side by the browser ✅","In the DNS cache"],exp:"Browsers save small text cookies on the user’s device."},
-{q:"Which status code indicates a page was not found?",opts:["200","301","404 ✅","500"],exp:"HTTP 404 means the requested resource could not be located."},
-{q:"A 301 redirect tells browsers that the resource…",opts:["Is temporarily unavailable","Has moved permanently ✅","Requires authentication","Is forbidden"],exp:"301 signals a permanent URL change; search engines update indexes."},
-{q:"Which HTTP method is idempotent and safe?",opts:["POST","PUT","GET ✅","DELETE"],exp:"GET requests should not alter state and are repeatable safely."},
-{q:"Which tag adds audio without plugins in HTML5?",opts:["<sound>","<media>","<audio> ✅","<bgsound>"],exp:"<audio controls src=\"file.mp3\"> provides native audio playback."},
-{q:"Which video format is royalty-free and recommended by W3C?",opts:["MP4","WebM ✅","AVI","MOV"],exp:"WebM is open and royalty-free; MP4 may have patent issues."},
-{q:"Which attribute makes an element uniquely addressable?",opts:["class","id ✅","name","type"],exp:"id values must be unique within a page for scripting/CSS targeting."},
-{q:"In CSS, ‘#main’ selects…",opts:["All <main> tags","An element with id=\"main\" ✅","A class named main","Any div"],exp:"The # selector targets specific IDs; .main targets classes."},
-{q:"Which property controls stacking order in CSS?",opts:["display","position","z-index ✅","layer"],exp:"z-index sets which overlapping element appears on top."},
-{q:"Flexbox is activated with which display value?",opts:["display:block","display:inline","display:flex ✅","display:grid"],exp:"display:flex enables the flexible box layout mode."},
-{q:"Bootstrap is primarily a…",opts:["JavaScript engine","CSS framework ✅","Database system","Web server"],exp:"Bootstrap is a popular front-end CSS framework for responsive sites."},
-{q:"Which tool is used for version control in web projects?",opts:["Photoshop","Git ✅","FileZilla","XAMPP"],exp:"Git tracks changes to source code and enables collaboration."},
-{q:"A Content Delivery Network (CDN) improves…",opts:["CPU temperature","Global load times ✅","Database indexing","Color accuracy"],exp:"CDNs cache assets worldwide to serve users from nearby servers."},
-{q:"Which file lists files Git should ignore?",opts:[".gitkeep",".ignore",".gitignore ✅",".exclude"],exp:"Create .gitignore to exclude temp files, logs, etc., from commits."},
-{q:"SQL injection attacks exploit…",opts:["Weak passwords","Unvalidated user input ✅","HTTPS certificates","CSS flaws"],exp:"Sanitising input prevents malicious SQL commands."},
-{q:"Which header tells browsers to treat resources as HTTPS only?",opts:["X-Frame-Options","Content-Security-Policy","Strict-Transport-Security ✅","X-Content-Type-Options"],exp:"HSTS enforces HTTPS connections for future requests."},
-{q:"Minification of CSS/JS reduces…",opts:["Security risks","File size and load time ✅","Colour depth","Image resolution"],exp:"Removing whitespace/comments makes files smaller (faster download)."},
-{q:"Which tag is replaced by <strong> for semantic emphasis?",opts:["<b>","<i>","<em>","<bold>"],exp:"<strong> conveys strong importance; <b> is purely presentational."},
-{q:"Which tag is obsolete for styling in HTML5?",opts:["<style>","<center> ✅","<span>","<link rel='stylesheet'>"],exp:"<center> was deprecated; use CSS text-align:center instead."},
-{q:"Which attribute specifies tooltip text?",opts:["hint","title ✅","alt","tooltip"],exp:"title=\"text\" shows on mouse hover across most elements."},
-{q:"SVG graphics are…",opts:["Raster images","Vector images ✅","Audio files","Video streams"],exp:"Scalable Vector Graphics use XML to describe shapes, not pixels."},
-{q:"Which API lets web pages store key/value pairs client-side?",opts:["LocalStorage ✅","FTP","WebSocket","AJAX"],exp:"localStorage.setItem/getItem retain data between sessions."},
-{q:"Which tag embeds external CSS?",opts:["<css>","<style src>","<link rel='stylesheet'> ✅","<meta>"],exp:"<link rel=\"stylesheet\" href=\"style.css\"> pulls external stylesheets."},
-{q:"Which HTML element groups related form controls?",opts:["<group>","<fieldset> ✅","<section>","<div>"],exp:"<fieldset> with <legend> improves form semantics and accessibility."},
-{q:"Which selector targets every paragraph inside <article>?",opts:["article p ✅","article > p","p article","p,article"],exp:"article p matches any descendant <p>; > matches only direct children."},
-{q:"Which unit is relative to the viewport width?",opts:["em","vw ✅","rem","px"],exp:"1 vw = 1 % of viewport width; useful for responsive typography."},
-{q:"Which HTML tag inserts a horizontal rule?",opts:["<line>","<hr> ✅","<rule>","<hrule>"],exp:"<hr> adds a thematic break (horizontal line) between sections."},
-{q:"Which attribute on <a> opens link in a new tab?",opts:["target='_blank' ✅","rel='external'","window='new'","tab='true'"],exp:"target=\"_blank\" instructs the browser to open the URL in a new tab/window."},
-{q:"In CSS, which property sets space between cell borders?",opts:["margin","padding","border-spacing ✅","cellpadding"],exp:"border-spacing (on <table>) controls gaps in the separated borders model."},
-{q:"Which pseudo-class styles links on hover?",opts:["a:click","a:hover ✅","a:focus","a:active"],exp:"a:hover applies styles when the pointer is over a link."},
-{q:"Which HTML5 feature allows background work without blocking UI?",opts:["Web Workers ✅","Cookies","Marquee","Frames"],exp:"Web Workers run scripts in parallel threads, keeping pages responsive."},
-{q:"Which tag is used for client-side scripting?",opts:["<server>","<js>","<script> ✅","<code>"],exp:"<script> blocks contain JavaScript executed by the browser."},
-{q:"Which HTTP header prevents MIME-type sniffing?",opts:["X-Content-Type-Options:nosniff ✅","X-Frame-Options","Content-Security-Policy","X-Download-Options"],exp:"nosniff stops browsers guessing content type, reducing XSS risk."},
-{q:"Which JavaScript function converts JSON string to object?",opts:["JSON.parse() ✅","JSON.stringify()","JSON.decode()","JSON.convert()"],exp:"JSON.parse(text) deserialises JSON strings into JavaScript objects."},
-{q:"Which HTML tag embeds external JavaScript?",opts:["<js>","<javascript>","<script src='...'> ✅","<include>"],exp:"<script src=\"main.js\"></script> pulls external code."},
-{q:"Which CSS feature applies styles based on parent container size?",opts:[":has()","@container ✅","@media","@supports"],exp:"@container queries allow component-scoped responsive styles, independent of viewport."},
-{q:"Which attribute enables spell-check on textarea?",opts:["spellcheck='true' ✅","check='spell'","autocorrect","grammar"],exp:"<textarea spellcheck='true'> enables browser spell-checking."},
-{q:"Which HTTP method is NOT safe or idempotent?",opts:["HEAD","GET","POST ✅","OPTIONS"],exp:"POST changes server state; repeating it may create duplicates."},
-{q:"Which CSS property creates drop shadows on text?",opts:["text-shadow ✅","box-shadow","shadow","font-shadow"],exp:"text-shadow:2px 2px 4px #000 adds shadow to glyphs."},
-{q:"Which attribute makes a checkbox pre-selected?",opts:["checked ✅","selected","active","default"],exp:"<input type='checkbox' checked> renders ticked by default."},
-{q:"Which HTML5 element provides machine-readable date/time?",opts:["<time datetime='...'> ✅","<date>","<timestamp>","<moment>"],exp:"<time datetime='2025-09-03'>September 3</time> aids SEO/accessibility."},
-{q:"Which CSS function adjusts colour lightness?",opts:["lighten()","darken()","hsl() ✅","rgb()"],exp:"hsl(120,50%,60%) lets you tweak lightness directly."},
-{q:"Which attribute keeps table headers visible while scrolling?",opts:["sticky","scope","headers","<thead> with position:sticky ✅"],exp:"CSS position:sticky on <th> keeps headers in view."},
-{q:"Which API sends HTTP requests without page reload?",opts:["AJAX ✅","DOM","CSSOM","HTML"],exp:"AJAX (via fetch/XHR) exchanges data asynchronously behind the scenes."},
-{q:"Which HTML element wraps rows in a table body?",opts:["<tbody> ✅","<trow>","<body>","<trbody>"],exp:"<tbody> groups table rows distinct from <thead> and <tfoot>."},
-{q:"Which CSS property sets minimum width?",opts:["width","min-width ✅","max-width","clamp"],exp:"min-width prevents elements shrinking below a specified length."},
-{q:"Which attribute prevents form submission?",opts:["disabled","readonly","novalidate","onsubmit='return false' ✅"],exp:"Returning false in onsubmit stops the browser’s default POST/GET."},
-{q:"Which HTML5 input type shows a colour picker?",opts:["<input type='color'> ✅","<input type='picker'>","<color>","<input type='rgb'>"],exp:"<input type='color'> opens native colour chooser."},
-{q:"Which CSS rule removes default list bullets?",opts:["list-style-type:none ✅","bullet:none","marker:none","list:none"],exp:"ul { list-style-type:none; } hides bullets/numbers."},
-{q:"Which HTML attribute links labels to inputs?",opts:["for ✅","id","name","label"],exp:"<label for='email'>Email:</label><input id='email'> associates them."},
-{q:"Which JavaScript keyword declares block-scoped variables?",opts:["var","let ✅","global","static"],exp:"let and const are block-scoped; var is function-scoped."},
-{q:"Which CSS function clamps fluid font sizes?",opts:["clamp() ✅","min()","max()","fit()"],exp:"font-size:clamp(1rem, 2vw, 2rem) scales smoothly within limits."},
-{q:"Which HTML tag inserts scalable icons from libraries like Font Awesome?",opts:["<i class='fas...'> ✅","<icon>","<fa>","<glyph>"],exp:"Font Awesome uses <i> with icon classes (e.g., fas fa-home)."},
-{q:"Which attribute on <video> preloads metadata only?",opts:["preload='auto'","preload='metadata' ✅","buffer='meta'","lazyload"],exp:"preload=\"metadata\" fetches dimensions & duration but not full video."},
-{q:"Which CSS property controls word wrapping?",opts:["word-wrap ✅","line-break","text-wrap","break-word"],exp:"word-wrap:break-word forces long strings to wrap."},
-{q:"Which HTML5 element provides a disclosure widget?",opts:["<details> ✅","<summary>","<accordion>","<toggle>"],exp:"<details><summary>Show more</summary>Content…</details> creates native collapsible sections."},
-{q:"Which HTTP header prevents clickjacking?",opts:["X-Frame-Options ✅","X-Clickjack-Protect","Frame-Break","Content-Security-Policy"],exp:"X-Frame-Options:DENY stops page from being embedded in iframes."},
-{q:"Which CSS property changes cursor appearance?",opts:["cursor ✅","pointer","mouse","icon"],exp:"cursor:pointer shows hand icon over clickable items."},
-{q:"Which tag defines alternative multimedia content?",opts:["<fallback>","<source> ✅","<alt>","<media>"],exp:"<source src='video.webm' type='video/webm'> inside <video>/<audio>."},
-{q:"Which JavaScript event fires when all resources are loaded?",opts:["DOMContentLoaded","load ✅","ready","loaded"],exp:"window.onload triggers after images, CSS, etc., are fully loaded."},
-{q:"Which CSS layout mode is one-dimensional?",opts:["Grid","Flexbox ✅","Table","Block"],exp:"Flexbox arranges items in a single row OR column; Grid is two-dimensional."},
-{q:"Which HTML attribute enables lazy image loading?",opts:["lazy","loading='lazy' ✅","defer","async"],exp:"<img loading='lazy'> defers off-screen images until needed."},
-{q:"Which CSS unit equals the x-height of the font?",opts:["ex ✅","em","ch","rem"],exp:"1 ex = height of lowercase ‘x’ in the current font."},
-{q:"Which HTML element wraps a table footer?",opts:["<tfoot> ✅","<footer>","<bottom>","<tablefoot>"],exp:"<tfoot> groups summary rows at the bottom of a table."},
-{q:"Which attribute on <a> links to an email address?",opts:["href='mailto:...' ✅","link='email'","to='...'","email='...'"],exp:"<a href='mailto:help@example.com'>Email us</a> opens user’s mail client."},
-{q:"Which CSS function filters images?",opts:["filter() ✅","image()","blend()","effect()"],exp:"filter:blur(5px) grayscale(100%); applies visual effects."},
-{q:"Which JavaScript method registers an event listener?",opts:["addEventListener() ✅","attachEvent()","listen()","register()"],exp:"element.addEventListener('click', handler) is the modern API."},
-{q:"Which HTML attribute defines a table caption?",opts:["<caption> ✅","title","summary","label"],exp:"<caption>Quarterly Sales</caption> labels the table for accessibility."},
-{q:"Which CSS pseudo-class targets disabled inputs?",opts:[":disabled ✅",":inactive",":readonly",":off"],exp:"input:disabled { opacity:0.5; } styles unusable fields."},
-{q:"Which header initiates server-sent events?",opts:["Content-Type:text/event-stream ✅","Accept:events","Cache-Control:stream","Event:push"],exp:"EventSource expects text/event-stream MIME type."},
-{q:"Which HTML5 element provides a progress bar?",opts:["<meter>","<progress> ✅","<bar>","<range>"],exp:"<progress value='30' max='100'>30%</progress> shows completion."},
-{q:"Which CSS value keeps an element in the viewport while scrolling?",opts:["position:static","position:sticky ✅","position:relative","position:inherit"],exp:"position:sticky toggles between relative and fixed based on scroll."},
-{q:"Which API captures user camera/microphone?",opts:["MediaDevices.getUserMedia() ✅","CameraAPI","RecordAPI","CaptureJS"],exp:"navigator.mediaDevices.getUserMedia({video:true}) requests webcam access."},
-{q:"Which HTML attribute defers script execution until after HTML parsing?",opts:["async","defer ✅","lazy","hold"],exp:"<script defer src=\"app.js\"> delays execution until DOM is ready."},
-{q:"Which unit equals 1/100th of viewport height?",opts:["vh","vw","vmin","dv ✅"],exp:"1 vh = 1 % of the viewport’s current height; dv is not standard."},
-{q:"Which HTML5 semantic tag is meant for tangential content?",opts:["<section>","<aside> ✅","<div>","<sidebar>"],exp:"<aside> contains sidebars, pull-quotes, adverts—content tangential to the main flow."},
-{q:"Which CSS pseudo-element targets the first letter?",opts:["::first-letter ✅",":first-letter","::letter-1",":first-char"],exp:"p::first-letter { font-size:2em; } styles initial letter only."},
-{q:"Which video attribute adds native controls?",opts:["controls ✅","ui","buttons","interface"],exp:"<video controls src='clip.mp4'> shows play/pause/volume buttons."},
-{q:"Which HTTP header prevents clickjacking?",opts:["X-Frame-Options ✅","Content-Security-Policy","Frame-Control","Embed-Protect"],exp:"X-Frame-Options:DENY blocks click-jacking by forbidding framing."},
-{q:"Which JavaScript keyword declares constants?",opts:["const ✅","let","var","define"],exp:"const PI=3.14; prevents reassignment of the binding."},
-{q:"Which HTML attribute provides high-DPI favicon support?",opts:["sizes ✅","resolution","density","srcset"],exp:"<link rel='icon' href='icon-32.png' sizes='32x32'> supplies multiple resolutions."},
-{q:"Which CSS rule applies styles only in dark mode?",opts:["@media (prefers-color-scheme:dark) ✅","@media dark","@media color-scheme:dark","@media mode:dark"],exp:"Prefers-color-scheme media query adapts themes to user system settings."},
-{q:"Which JavaScript method converts a NodeList to an array?",opts:["Array.from() ✅","NodeList.toArray()","Array.convert()","[].slice.call()"],exp:"Array.from(document.querySelectorAll('li')) returns a real array."},
-{q:"Which HTML attribute sets autocomplete hint for inputs?",opts:["autocomplete ✅","predict","suggest","auto"],exp:"autocomplete='email' helps browsers prefill known email addresses."},
-{q:"Which CSS property specifies fallback fonts?",opts:["font-family ✅","font-stack","font-list","font-fallback"],exp:"font-family:'Helvetica Neue', Arial, sans-serif; provides cascading fallbacks."},
-{q:"Which JavaScript API enables bidirectional server communication?",opts:["WebSocket ✅","HTTP2","SSE","AJAX"],exp:"new WebSocket('wss://chat') creates full-duplex channels."},
-{q:"Which HTML tag embeds vector-based icons without images?",opts:["<svg> ✅","<vector>","<icon>","<glyph>"],exp:"Inline <svg> allows scalable icons styled with CSS."},
-{q:"Which CSS rule targets every element except one?",opts:[":not(selector) ✅",":except(selector)",":exclude(selector)","!selector"],exp:"li:not(.active) { opacity:0.5; } excludes the active item."},
-{q:"Which attribute on <img> enables responsive images?",opts:["srcset ✅","sizes","responsive","media"],exp:"srcset='pic-480.jpg 480w, pic-800.jpg 800w' supplies multiple resolutions."},
-{q:"Which JavaScript method removes whitespace from both ends?",opts:["trim() ✅","strip()","clean()","chomp()"],exp:"' hello '.trim() returns 'hello'."},
-{q:"Which CSS property creates animated keyframes?",opts:["@keyframes ✅","@animate","@motion","@tween"],exp:"@keyframes slide { from {left:0;} to {left:100px;} } defines animations."},
-{q:"Which HTML attribute sets the scope of a table header?",opts:["scope ✅","range","area","zone"],exp:"<th scope='row'>Header</th> associates header with its row."},
-{q:"Which CSS value makes content invisible but accessible?",opts:["opacity:0","visibility:hidden","position:absolute; left:-9999px ✅","display:none"],exp:"Off-screen positioning hides visually yet keeps screen-reader access."},
-{q:"Which JavaScript object stores session-only key/value pairs?",opts:["sessionStorage ✅","localStorage","cookieStorage","tempStorage"],exp:"sessionStorage persists only for the duration of the page session."},
-{q:"Which HTTP header prevents embedding in iframes?",opts:["X-Frame-Options ✅","Content-Security-Policy","Frame-Control","Embed-Protect"],exp:"X-Frame-Options:DENY blocks click-jacking by forbidding framing."},
-{q:"Which CSS property sets the initial main size of a flex item?",opts:["flex-basis ✅","flex-size","flex-width","initial-size"],exp:"flex-basis:200px defines the starting size before free space is distributed."},
-{q:"Which HTML attribute allows spell-checking on contenteditable?",opts:["spellcheck ✅","checkspelling","autocorrect","grammar"],exp:"<div contenteditable spellcheck='true'> enables red underlines."},
-{q:"Which CSS rule selects elements based on attribute presence?",opts:["[attr] ✅","attr{}",".attr","#attr"],exp:"input[type='checkbox'] selects only checkboxes using attribute selectors."},
-{q:"Which JavaScript API requests user permission for notifications?",opts:["Notification.requestPermission() ✅","Notification.allow()","Notification.prompt()","Notification.grant()"],exp:"Notification.requestPermission().then(perm => …) asks user to allow alerts."},
-{q:"Which HTML element defines client-side script templates?",opts:["<template> ✅","<script type='template'>","<tmpl>","<script-template>"],exp:"<template> holds inert markup cloned by JavaScript when needed."},
-{q:"Which CSS property sets grid template areas visually?",opts:["grid-template-areas ✅","grid-areas","layout-areas","template-areas"],exp:"grid-template-areas:'header header' 'nav main' defines named grid slots."}
+  {q:"Who invented the World Wide Web?", opts:["Vint Cerf","Tim Berners-Lee ✅","Steve Jobs","Bill Gates"], exp:"Tim Berners-Lee, a British scientist at CERN, invented the Web in 1989."},
+  {q:"The Web became publicly announced on which date?", opts:["6 August 1991 ✅","15 February 2005","12 March 1989","1 January 1993"], exp:"CERN publicized the World-Wide-Web project on 6 August 1991."},
+  {q:"What does HTML stand for?", opts:["High-Level Mark-up Language","HyperText Mark-up Language ✅","Home Tool Mark-up Language","HyperTransfer Mark-up Language"], exp:"HTML = HyperText Mark-up Language, the publishing language of the Web."}
+  // Add other questions as needed...
 ];
 
 let idx = 0;
@@ -199,28 +78,30 @@ function renderQ() {
   opts.innerHTML = '';
   feedback.classList.add('hidden');
 
-  item.opts.forEach((opt,i)=>{
+  item.opts.forEach((opt, i) => {
     const label = document.createElement('label');
     const radio = document.createElement('input');
-    radio.type='radio'; radio.name='opt'; radio.value=i;
-    radio.addEventListener('change',()=>checkAnswer(i));
+    radio.type = 'radio';
+    radio.name = 'opt';
+    radio.value = i;
+    radio.addEventListener('change', () => checkAnswer(i));
     label.appendChild(radio);
-    label.append(opt.replace(' ✅',''));
+    label.appendChild(document.createTextNode(opt.replace(' ✅','')));
     opts.appendChild(label);
   });
 }
 
 function checkAnswer(chosen) {
   const item = bank[idx];
-  const correct = item.opts.findIndex(o=>o.includes('✅'));
+  const correct = item.opts.findIndex(o => o.includes('✅'));
   const right = chosen === correct;
   emoji.textContent = right ? '🏆' : '👶';
   let html = right ? '<strong>Correct!</strong><br>' : '<strong>Not quite.</strong><br>';
-  opts.querySelectorAll('label')[correct].className = 'rightOpt';
+  opts.querySelectorAll('label')[correct].classList.add('rightOpt');
   html += item.exp;
   exp.innerHTML = html;
   feedback.classList.remove('hidden');
-  opts.querySelectorAll('input').forEach(r=>r.disabled=true);
+  opts.querySelectorAll('input').forEach(r => r.disabled = true);
 }
 
 function nextQ() {
