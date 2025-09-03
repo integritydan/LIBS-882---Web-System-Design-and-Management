@@ -5,41 +5,51 @@
 <title>LIBS 882 – 200-Q Quiz</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background: #f5f5f5;
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    background:#f5f5f5;
   }
-  #card {
-    margin: 40px auto;
-    max-width: 700px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-    padding: 30px;
+  #card{
+    margin:40px auto;
+    max-width:700px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+    padding:30px;
   }
-  .hidden { display: none; }
-  .emoji { font-size: 3em; text-align: center; margin: 10px; }
-  .exp { margin-top: 15px; font-size: .95em; color: #333; line-height: 1.5; }
-  .nextBtn {
-    background: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 15px;
+  .hidden{display:none}
+  .emoji{font-size:3em;text-align:center;margin:10px}
+  .exp{margin-top:15px;font-size:.95em;color:#333;line-height:1.5}
+  .nextBtn{
+    background:#007bff;
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    border-radius:4px;
+    cursor:pointer;
+    margin-top:15px;
   }
-  .nextBtn:hover { background: #0056b3; }
-  .rightOpt {
-    background: #d4edda;
-    border: 1px solid #c3e6cb;
-    border-radius: 4px;
-    padding: 4px;
-    margin: 4px 0;
+  .nextBtn:hover{background:#0056b3}
+  .rightOpt{
+    background:#d4edda;
+    border:1px solid #c3e6cb;
+    border-radius:4px;
+    padding:4px;
+    margin:4px 0;
   }
-  label { display: block; margin: 6px 0; }
-  input[type=radio] { margin-right: 8px; }
+  label{display:block;margin:6px 0}
+  input[type=radio]{margin-right:8px}
+  /* Confetti animation for correct answer */
+  @keyframes confetti {
+    0% {transform:translateY(0) rotate(0deg);}
+    100% {transform:translateY(300px) rotate(360deg);}
+  }
+  .confetti {
+    position:absolute;
+    font-size:1.5em;
+    animation:confetti 1s ease-in forwards;
+  }
 </style>
 </head>
 <body>
@@ -56,11 +66,19 @@
 </div>
 
 <script>
+// 200-question LIBS 882 quiz (sample 10 shown, repeat pattern for all 200)
 const bank = [
   {q:"Who invented the World Wide Web?", opts:["Vint Cerf","Tim Berners-Lee ✅","Steve Jobs","Bill Gates"], exp:"Tim Berners-Lee, a British scientist at CERN, invented the Web in 1989."},
   {q:"The Web became publicly announced on which date?", opts:["6 August 1991 ✅","15 February 2005","12 March 1989","1 January 1993"], exp:"CERN publicized the World-Wide-Web project on 6 August 1991."},
-  {q:"What does HTML stand for?", opts:["High-Level Mark-up Language","HyperText Mark-up Language ✅","Home Tool Mark-up Language","HyperTransfer Mark-up Language"], exp:"HTML = HyperText Mark-up Language, the publishing language of the Web."}
-  // Add other questions as needed...
+  {q:"Which tag pair defines the largest heading in HTML?", opts:["&lt;h6&gt;…&lt;/h6&gt;","&lt;head&gt;…&lt;/head&gt;","&lt;h1&gt;…&lt;/h1&gt; ✅","&lt;title&gt;…&lt;/title&gt;"], exp:"&lt;h1&gt; produces the top-level heading; &lt;h6&gt; is smallest."},
+  {q:"What does HTML stand for?", opts:["High-Level Mark-up Language","HyperText Mark-up Language ✅","Home Tool Mark-up Language","HyperTransfer Mark-up Language"], exp:"HTML = HyperText Mark-up Language, the publishing language of the Web."},
+  {q:"Which organisation maintains HTML standards?", opts:["IETF","W3C ✅","ISO","IEEE"], exp:"The World Wide Web Consortium (W3C) oversees HTML specifications."},
+  {q:"HTTP is carried primarily over which TCP port?", opts:["21","25","80 ✅","443"], exp:"HTTP traditionally uses TCP port 80 (443 for HTTPS)."},
+  {q:"Which HTML attribute is required in every &lt;img&gt; tag for accessibility?", opts:["src","alt ✅","width","align"], exp:"The alt attribute provides alternative text for screen readers."},
+  {q:"Which HTML tag creates a line break without starting a new paragraph?", opts:["&lt;br&gt; ✅","&lt;p&gt;","&lt;hr&gt;","&lt;lb&gt;"], exp:"&lt;br&gt; inserts a single line-break; &lt;p&gt; creates a paragraph."},
+  {q:"Which HTML tag defines an unordered list?", opts:["&lt;ol&gt;","&lt;ul&gt; ✅","&lt;li&gt;","&lt;dl&gt;"], exp:"&lt;ul&gt; creates a bulleted (unordered) list; &lt;ol&gt; is numbered."},
+  {q:"To create a hyperlink, which tag is used?", opts:["&lt;link&gt;","&lt;a&gt; ✅","&lt;href&gt;","&lt;hyper&gt;"], exp:"The anchor tag &lt;a&gt; with href attribute creates hyperlinks."}
+  // ... Repeat pattern until 200 questions
 ];
 
 let idx = 0;
@@ -74,39 +92,50 @@ const exp = document.getElementById('exp');
 function renderQ() {
   const item = bank[idx];
   qNum.textContent = `Question ${idx + 1} of ${bank.length}`;
-  stem.textContent = item.q.replace(' ✅','');
+  stem.innerHTML = item.q.replace(/ ✅/g,'');
   opts.innerHTML = '';
   feedback.classList.add('hidden');
 
-  item.opts.forEach((opt, i) => {
+  item.opts.forEach((opt,i)=>{
     const label = document.createElement('label');
     const radio = document.createElement('input');
-    radio.type = 'radio';
-    radio.name = 'opt';
-    radio.value = i;
-    radio.addEventListener('change', () => checkAnswer(i));
+    radio.type='radio'; radio.name='opt'; radio.value=i;
+    radio.addEventListener('change',()=>checkAnswer(i));
     label.appendChild(radio);
     label.appendChild(document.createTextNode(opt.replace(' ✅','')));
     opts.appendChild(label);
   });
 }
 
+function showConfetti(){
+  for(let i=0;i<30;i++){
+    const conf = document.createElement('div');
+    conf.textContent = '🎉';
+    conf.className='confetti';
+    conf.style.left=Math.random()*window.innerWidth+'px';
+    conf.style.animationDuration=(Math.random()*1+1)+'s';
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),1500);
+  }
+}
+
 function checkAnswer(chosen) {
   const item = bank[idx];
-  const correct = item.opts.findIndex(o => o.includes('✅'));
+  const correct = item.opts.findIndex(o=>o.includes('✅'));
   const right = chosen === correct;
-  emoji.textContent = right ? '🏆' : '👶';
+  emoji.textContent = right ? '🎉' : '👶';
+  if(right) showConfetti();
   let html = right ? '<strong>Correct!</strong><br>' : '<strong>Not quite.</strong><br>';
-  opts.querySelectorAll('label')[correct].classList.add('rightOpt');
+  opts.querySelectorAll('label')[correct].className = 'rightOpt';
   html += item.exp;
   exp.innerHTML = html;
   feedback.classList.remove('hidden');
-  opts.querySelectorAll('input').forEach(r => r.disabled = true);
+  opts.querySelectorAll('input').forEach(r=>r.disabled=true);
 }
 
 function nextQ() {
   idx++;
-  if (idx < bank.length) renderQ();
+  if(idx < bank.length) renderQ();
   else {
     qNum.textContent = 'All done!';
     stem.textContent = '🎉 You have completed the 200-question LIBS 882 quiz.';
